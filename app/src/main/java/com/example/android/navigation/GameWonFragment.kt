@@ -36,7 +36,7 @@ class GameWonFragment : Fragment() {
 
         // gameFragmentの画面に戻る
         binding.nextMatchButton.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_gameWonFragment_to_gameFragment)
+            view.findNavController().navigate(GameWonFragmentDirections.actionGameWonFragmentToGameFragment())
         }
 
         val args = GameWonFragmentArgs.fromBundle(requireArguments())
