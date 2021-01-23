@@ -30,11 +30,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         @Suppress("UNUSED_VARIABLE")
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-
+        drawerLayout = binding.drawerLayout
 
         val navController = this.findNavController(R.id.myNavHostFragment)
 
         NavigationUI.setupActionBarWithNavController(this,navController)
+
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
 
         // ユーザーがナビゲーションドロワーを表示できるようにする
         NavigationUI.setupWithNavController(binding.navView, navController)
@@ -42,6 +44,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.myNavHostFragment)
-        return navController.navigateUp()
+        return NavigationUI.navigateUp(navController, drawerLayout)
     }
 }
